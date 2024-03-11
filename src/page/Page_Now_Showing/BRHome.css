@@ -1,0 +1,152 @@
+:root{
+  --fontcolor:#3dccfb;
+  --background:#37cdffaa;
+  --background-opacity:#07baf52d;
+}
+.BodyHome
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.FrameSilder{
+  width: 100%;
+  height: 100%;
+  max-width: 100vw;
+}
+
+
+
+.Slider
+{   
+    position: relative;
+    display: flex;
+    /* aspect-ratio: 16/9; */
+    height: 100%;
+    width: 100%;
+    background-color: #0B2447;
+    border-radius: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    /* perspective: 20px;  */
+    border-radius: 8px;
+ 
+    
+}
+
+.ItemSlider_Hidden{
+  flex: 1 0 0% !important;
+}
+
+.ItemSlider_Hidden .contentISlider{
+  font-size: 0px !important;
+}
+.ItemSlider_Hidden .buttonISlider{
+  opacity: 0 !important;
+}
+
+.ItemSlider{
+  position: relative;
+  flex: 1 0 100%;
+  scroll-snap-align: start;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.ItemSlider img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contentISlider{
+  position: absolute;
+  font-size: 15px;
+  bottom: 15%;
+  left: 12%;
+  color: #fff;
+  transition: .2s;
+  text-shadow:1px 1px 10px #0B2447 ;
+}
+
+.buttonISlider{
+  position: absolute;
+  width: 20%;
+  display: grid;
+  grid-template-columns:100%;
+  gap: 20px;
+  font-size: 20px;
+  bottom: 15%;
+  left: 5%;
+  color: aqua;
+  opacity: 1;
+  transition: .2s;
+  
+}
+
+.buttonISlider button{
+  background: #00416a;
+  background: -webkit-linear-gradient(to right, #00416a, #e4e5e6);
+  background: linear-gradient(to right, #00416a, #e4e5e6);
+  background-size: 500% 500%;
+  background-position:50% 100%; 
+  padding: 10px 5px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  color: #fff;
+  transition: .5s;
+  overflow: hidden;
+}
+
+.buttonISlider .IconSlider{
+  display: flex;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+  background-color: #19a4d1;
+  border-radius: 50%;
+}
+
+.buttonISlider .IconSlider svg{
+  transform: translateX(2px);
+}
+
+.buttonISlider button:hover{
+  background-position:10% 10%; 
+}
+
+.btnFrameSlider{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  top:calc(50% - 25px)
+}
+
+.btnFrameSlider button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  margin: 0 20px;
+  background: #9a9b9c3f; /* fallback for old browsers */
+  color: #fff;
+  transition:  0.2s;
+}
+.btnFrameSlider button:hover{
+  width: 55px;
+  height: 55px;
+  background: #9a9b9c7a;
+}
+
