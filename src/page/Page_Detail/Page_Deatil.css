@@ -1,0 +1,36 @@
+.Detail_Frame{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+}
+
+.Detail_Frame .Content_Detail{
+    width: 70%;
+    height: 40%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    align-items: center;
+    justify-items: center;
+    column-gap: 20px;
+
+}
+
+.Content_Detail img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.Content_Detail .Content_Right{
+    background-color: aliceblue;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}

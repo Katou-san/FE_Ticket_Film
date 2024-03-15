@@ -23,7 +23,7 @@
 {   
     position: relative;
     display: flex;
-    /* aspect-ratio: 16/9; */
+    aspect-ratio: 16/9;
     height: 100%;
     width: 100%;
     background-color: #0B2447;
@@ -31,9 +31,9 @@
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    /* perspective: 20px;  */
+    perspective: 20px; 
     border-radius: 8px;
- 
+    max-height: 550px
     
 }
 
@@ -127,7 +127,7 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   top:calc(50% - 25px)
 }
 

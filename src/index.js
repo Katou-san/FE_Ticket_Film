@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-import { PageLogin, PageMain, PageNowShowing } from "./page";
+import { PageLogin, PageMain, PageDetail, PageNowShowing } from "./page";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -12,7 +12,8 @@ root.render(
       <Route path="/Login" element={<PageLogin />}></Route>
       <Route path="/" element={<App />}>
         <Route path="/" element={<PageNowShowing />}></Route>
-        <Route path="/Coming_soon" element={<PageLogin />}></Route>
+        <Route path="/coming_soon" element={<PageLogin />}></Route>
+        <Route path="/detail" element={<PageDetail />}></Route>
       </Route>
     </Routes>
   </BrowserRouter>
