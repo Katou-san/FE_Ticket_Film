@@ -1,4 +1,10 @@
 import React, { useContext, useState } from "react";
+import { Register_Error } from "../../../Util";
+import { Sigup_S } from "../../../service";
+import { useAxios } from "../../../Hook";
+import { useNavigate } from "react-router-dom";
+import { contextLogin } from "../../../Hook/Context/Context_Login";
+
 // import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 // import { Get_Playlist_User, SigupService } from "../../../Service/User_Service";
@@ -9,17 +15,16 @@ import React, { useContext, useState } from "react";
 // import useAxios from "../../../Hook/Custom_Hook/useAxios_Get";
 
 function Register({ Value }) {
-  // const { dispatch_Login, dispatch_Playlist_user } = useContext(contextLogin);
+  const { state_Login, dispatch_Login } = useContext(contextLogin);
+  const Navigate = useNavigate();
+  const [state, dispatch] = useAxios();
 
-  // const [state, dispatch] = useAxios();
-  // const { Is_Loading } = state;
-  // const Navigate = useNavigate();
   const [FormValue, setFormValue] = useState({
-    User_Id: "",
-    User_Email: "",
-    User_Name: "",
-    User_Pass: "",
-    User_Confirm_Pass: "",
+    Email: "",
+    Pass: "",
+    Confirm_Pass: "",
+    Phone: "",
+    Address: "",
   });
   const [ValueError, setValueError] = useState({});
 
@@ -29,7 +34,24 @@ function Register({ Value }) {
 
   const SubmitRegister = (e) => {
     e.preventDefault();
-    console.log(FormValue);
+    setValueError(Register_Error(FormValue).Detail_Error);
+    if (!Register_Error(FormValue).is_Error) {
+      dispatch({ type: "REQUEST" });
+      Sigup_S(FormValue)
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            dispatch({ type: "SUCCESS" });
+            localStorage.setItem("Access_Token", res.data.Access_Token);
+            Navigate("/");
+          } else {
+            console.log(res);
+          }
+        })
+        .catch((err) => {
+          dispatch({ type: "ERROR", payload: { error: err.messeage } });
+        });
+    }
   };
 
   return (
@@ -41,8 +63,8 @@ function Register({ Value }) {
           <input
             type="text"
             required
-            value={FormValue.User_Email}
-            onChange={(e) => Set_Change_Value({ User_Email: e.target.value })}
+            value={FormValue.Email}
+            onChange={(e) => Set_Change_Value({ Email: e.target.value })}
           />
 
           <div className="toastInput"></div>
@@ -53,8 +75,8 @@ function Register({ Value }) {
           <input
             type="password"
             required
-            value={FormValue.User_Pass}
-            onChange={(e) => Set_Change_Value({ User_Pass: e.target.value })}
+            value={FormValue.Pass}
+            onChange={(e) => Set_Change_Value({ Pass: e.target.value })}
           />
 
           <div className="toastInput"></div>
@@ -65,17 +87,38 @@ function Register({ Value }) {
           <input
             type="password"
             required
-            value={FormValue.User_Confirm_Pass}
-            onChange={(e) =>
-              Set_Change_Value({ User_Confirm_Pass: e.target.value })
-            }
+            value={FormValue.Confirm_Pass}
+            onChange={(e) => Set_Change_Value({ Confirm_Pass: e.target.value })}
+          />
+
+          <div className="toastInput"></div>
+        </div>
+        <div className="inputText">
+          <label htmlFor="SRPass">Phone</label>
+          <input
+            type="password"
+            required
+            value={FormValue.Phone}
+            onChange={(e) => Set_Change_Value({ Phone: e.target.value })}
+          />
+
+          <div className="toastInput"></div>
+        </div>
+        <div className="inputText">
+          <label htmlFor="SRPass">Address</label>
+          <input
+            type="password"
+            required
+            value={FormValue.Address}
+            onChange={(e) => Set_Change_Value({ Address: e.target.value })}
           />
 
           <div className="toastInput"></div>
         </div>
         <button
           className="mt-30U Loginbtn"
-          id={true ? "Registerbtn" : "normal2"}
+          id={true ? "" : "normal2"}
+          // id={true ? "Registerbtn" : "normal2"}
           type="submit"
         >
           Register

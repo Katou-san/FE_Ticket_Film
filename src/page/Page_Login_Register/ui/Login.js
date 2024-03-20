@@ -1,35 +1,49 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "../css/Login.css";
+import { Login_Error } from "../../../Util";
+import { Login_S } from "../../../service";
+import { useAxios } from "../../../Hook";
+import { useNavigate } from "react-router-dom";
+import { contextLogin } from "../../../Hook/Context/Context_Login";
 const Client_Id = "330b6c67acca4d537d39";
 // Client_Id lay trong github nha
-function Login({ dispacth_Value, Value }) {
-  // const [state, dispatch] = useAxios();
-  // const { Is_Loading } = state;
+function Login({ Value }) {
+  const [state, dispatch] = useAxios();
+  const Navigate = useNavigate();
+  const { state_Login, dispatch_Login } = useContext(contextLogin);
   const [ValueError, setValueError] = useState({});
   const [FormLogin, setFormLogin] = useState({
-    User_Id: "",
-    User_Email: "",
-    User_Name: "",
-    User_Pass: "",
-    User_Confirm_Pass: "",
+    Email: "",
+    Pass: "",
   });
 
   const Change_Value_Login = (value) => {
     setFormLogin({ ...FormLogin, ...value });
   };
 
-  const Login_With_Github = () => {
-    window.location.assign(
-      "https://github.com/login/oauth/authorize?client_id=" + Client_Id
-
-      // Sau khi xac nhan github tra ve duong dan "localhost:3000/code="ddaddwrfrf"
-      //                                                          code này do github trả về
-    );
-  };
-
   const LoginSubmitForm = (e) => {
     e.preventDefault();
-    console.log("Suubmit form submission");
+    setValueError(Login_Error(FormLogin).Detail_Error);
+    if (!Login_Error(FormLogin).is_Error) {
+      dispatch({ type: "REQUEST" });
+      Login_S(FormLogin)
+        .then((res) => {
+          if (res.status === 200) {
+            localStorage.setItem("Access_Token", res.data.Access_Token);
+            dispatch_Login({
+              type: "CHANGE",
+              payload: { ...res.data, is_Login: true },
+            });
+            Navigate("/");
+          } else {
+            console.log(res);
+          }
+          dispatch({ type: "SUCCESS" });
+        })
+        .catch((err) => {
+          dispatch({ type: "ERROR", payload: { Error: err } });
+        });
+    }
   };
 
   return (
@@ -41,8 +55,8 @@ function Login({ dispacth_Value, Value }) {
           <input
             type="text"
             required
-            value={FormLogin.User_Email}
-            onChange={(e) => Change_Value_Login({ User_Email: e.target.value })}
+            value={FormLogin.Email}
+            onChange={(e) => Change_Value_Login({ Email: e.target.value })}
           />
           <div className="toastInput"></div>
         </div>
@@ -51,8 +65,8 @@ function Login({ dispacth_Value, Value }) {
           <input
             type="password"
             required
-            value={FormLogin.User_Pass}
-            onChange={(e) => Change_Value_Login({ User_Pass: e.target.value })}
+            value={FormLogin.Pass}
+            onChange={(e) => Change_Value_Login({ Pass: e.target.value })}
           />
 
           <div className="toastInput"></div>
@@ -70,9 +84,7 @@ function Login({ dispacth_Value, Value }) {
       </form>
       <div className="otherOptions">
         <div className="titleOther">Or</div>
-        <button className="optionLogin" onClick={Login_With_Github}>
-          Github
-        </button>
+        <button className="optionLogin ">Github</button>
         <button className="optionLogin ">Twitter</button>
       </div>
       <div className="btnLink mt-20U ">

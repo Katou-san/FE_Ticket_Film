@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import Header from "./component/Header/main-ui/Header";
 import { PageMain } from "./page";
 

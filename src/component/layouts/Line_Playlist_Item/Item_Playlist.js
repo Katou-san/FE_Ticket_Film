@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PlayIcon } from "../../icons/Icon";
 // import {
 //   Get_Playlist_Img,
@@ -15,8 +16,15 @@ export default function ItemLinePlaylist({ item, list_Item }) {
   //   );
   // }, [item]);
 
+  const navigate = useNavigate();
+
   return (
-    <div className="itemE">
+    <div
+      className="itemE"
+      onClick={() => {
+        navigate(`/Detail?Film_id=${item.Id}`);
+      }}
+    >
       <div className="Farme_Img_Item">
         <img src={item.Avatar} alt="" srcSet="" />
       </div>

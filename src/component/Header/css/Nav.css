@@ -25,7 +25,7 @@
 
 .filterBulrH{
     
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(50px);
     z-index: 9;
     background-color: #0b0b0b73 !important;
 }

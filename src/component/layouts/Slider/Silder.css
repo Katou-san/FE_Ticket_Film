@@ -2,3 +2,176 @@
     width: 100%;
     height: 550px;
 }
+
+
+.FrameSilder{
+    width: 100%;
+    height: 100%;
+    max-width: 100vw;
+  }
+  
+  
+  
+  .Slider
+  {   
+      position: relative;
+      display: flex;
+      aspect-ratio: 16/9;
+      height: 100%;
+      width: 100%;
+      background-color: #0B2447;
+      border-radius: 8px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      perspective: 20px; 
+      border-radius: 8px;
+      max-height: 550px;
+      /* box-shadow: 0 0 10px #000; */
+  }
+  
+  .ItemSlider_Hidden{
+    flex: 1 0 0% !important;
+  }
+ 
+  .ItemSlider_Hidden .contentISlider{
+    font-size: 0px !important;
+    width: 0 !important;
+    transition: .2s;
+  }
+
+  .ItemSlider_Hidden .buttonISlider{
+    opacity: 0 !important;
+  }
+  
+  .ItemSlider{
+    position: relative;
+    flex: 1 0 100%;
+    scroll-snap-align: start;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transition: .5s;
+  }
+
+  .ItemSlider img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+  }
+  
+  .contentISlider{
+    position: absolute;
+    font-size: 15px;
+    top: 15%;
+    left: 8%;
+    color: #fff;
+    transition: .2s;
+    max-width: 450px;
+    overflow: hidden;
+    
+  }
+
+  .contentISlider h1{
+    font-size: 3.5rem ;
+    max-width: 450px;
+    display: inline-block;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: clip;
+  }
+
+  .contentISlider h2{
+    font-size: 1.5rem;
+    color: #d62727;
+    margin-bottom: 30px;
+  }
+  
+  .contentISlider p{
+    max-width:  450px;
+    font-size: 18px;
+    display: inline-block;
+    overflow: hidden;
+    word-wrap: break-word;
+    text-overflow: clip;
+  }
+
+  .buttonISlider{
+    position: absolute;
+    width: 20%;
+    display: grid;
+    grid-template-columns:100%;
+    gap: 20px;
+    font-size: 20px;
+    bottom: 10%;
+    right: 10%;
+    color: aqua;
+    opacity: 1;
+    transition: .2s;
+    
+  }
+  
+  .buttonISlider button{
+    background: #00416a;
+    background: -webkit-linear-gradient(to right, #00416a, #e4e5e6);
+    background: linear-gradient(to right, #00416a, #e4e5e6);
+    background-size: 500% 500%;
+    background-position:50% 100%; 
+    padding: 10px 5px;
+    font-size: 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    color: #fff;
+    transition: .5s;
+    overflow: hidden;
+    z-index: 10;
+  }
+  
+  .buttonISlider .IconSlider{
+    display: flex;
+    padding: 15px 10px;
+    font-size: 21px;
+    font-weight: 600 ;
+    justify-content: center;
+    align-items: center;
+    background-color: #19a4d1;
+    border-radius: 8px;
+    color: #fff;
+  }
+  
+  .buttonISlider .IconSlider svg{
+    transform: translateX(2px);
+  }
+  
+  .buttonISlider button:hover{
+    background-position:10% 10%; 
+  }
+  
+  .btnFrameSlider{
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    top:calc(50% - 25px)
+  }
+  
+  .btnFrameSlider button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    margin: 0 20px;
+    background: #9a9b9c3f; /* fallback for old browsers */
+    color: #fff;
+    transition:  0.2s;
+  }
+  .btnFrameSlider button:hover{
+    width: 55px;
+    height: 55px;
+    background: #9a9b9c7a;
+  }

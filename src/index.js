@@ -1,22 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ContextLoginProvider } from "./Hook/Context/Context_Login";
 import reportWebVitals from "./reportWebVitals";
-import { PageLogin, PageMain, PageDetail, PageNowShowing } from "./page";
+import { PageLogin, PageDetail, PageNowShowing, PagePayTicket } from "./page";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/Login" element={<PageLogin />}></Route>
-      <Route path="/" element={<App />}>
-        <Route path="/" element={<PageNowShowing />}></Route>
-        <Route path="/coming_soon" element={<PageLogin />}></Route>
-        <Route path="/detail" element={<PageDetail />}></Route>
-      </Route>
-    </Routes>
-  </BrowserRouter>
+  <ContextLoginProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<PageLogin />}></Route>
+        <Route path="/" element={<App />}>
+          <Route path="/" element={<PageNowShowing />}></Route>
+          <Route path="/detail" element={<PageDetail />}></Route>
+          <Route path="/ticket" element={<PagePayTicket />}></Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </ContextLoginProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

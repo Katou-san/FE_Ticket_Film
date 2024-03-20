@@ -41,7 +41,8 @@
 .FrameBtnLogin .optionNav
 {
     position: absolute;
-    bottom: -250px;
+    padding-top: 5px;
+    bottom: -140%;
     left: 0;
     font-size: 18px;
     width: 0%;

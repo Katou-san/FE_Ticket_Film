@@ -1,11 +1,11 @@
-const Login_Reducer = (state, action) => {
+const Reducer_Change = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "CHANGE":
-      return { ...state, Is_Loading: false, ...payload };
+      return { ...state, ...payload };
     default:
       break;
   }
 };
 
-export { Login_Reducer };
+export { Reducer_Change };

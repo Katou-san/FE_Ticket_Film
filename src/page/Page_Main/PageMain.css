@@ -2,3 +2,7 @@
     width: 100%;
     background-color: #00000084;
 }
+
+html {
+    scroll-behavior: smooth;
+}
