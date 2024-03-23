@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PlayIcon } from "../../icons/Icon";
-export default function ItemSlider({ value, classHidden }) {
+import useAxios from "../../../Hook/useAxios";
+import { Get_Film_Id } from "../../../service/Film_Service";
+import { Date_Handle } from "../../../Util";
+export default function ItemSlider({ id, classHidden }) {
+  const [state, dispatch] = useAxios();
+  const { launch_date, name, poster, time, description } = state.data;
+  const [URL_Result, Set_URL_Result] = useState("");
+  useEffect(() => {
+    Get_Film_Id(id).then((res) => {
+      dispatch({ type: "SUCCESS", payload: { data: res.data } });
+    });
+  }, [id]);
+  let Date = Date_Handle(launch_date);
   return (
     <div className={`ItemSlider ${classHidden}`}>
-      <img src={value.Avatar} alt="" />
+      <img src={URL_Result} alt="" />
       <div className="contentISlider">
-        <h1>{value.Name}</h1>
-        <h2>{value.Singer}</h2>
-        <p>
-          xdfgdfgdgdfdgdfgdfgdgggggggggggvsddddddddddddddddddddddddddddddddddd
-        </p>
+        <h1>{name} </h1>
+        <h3>Time:{"    " + time}</h3>
+        <h2>Date: {Date.day + "-" + Date.month + "-" + Date.year}</h2>
+
+        <p>{description}</p>
       </div>
       <div className="buttonISlider">
         <div className="IconSlider">Đặt vé</div>

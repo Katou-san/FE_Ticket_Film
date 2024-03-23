@@ -8,7 +8,7 @@
     justify-content: center;
     justify-items: center;
     width:80%;
-    background-color:#0f5e97b7;
+    background-color:rgba(203, 155, 92, 0.676);
     border-radius: 40px;
     color: #A5D7E8;
     transition: .5s;
@@ -54,7 +54,7 @@
 }
 
 #hasSearchValue{
-    background-color: #19a4d1;
+    background-color: rgba(255, 176, 72, 0.589);
 }
 
 .inputSearch circle,

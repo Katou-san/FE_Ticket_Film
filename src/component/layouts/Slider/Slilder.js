@@ -3,33 +3,29 @@ import ItemSlider from "./ItemSlider";
 import "./Silder.css";
 import { Api__Test } from "../../../Test/Api_Test";
 import { ArrowRightIcon, ArrowLeftIcon } from "../../icons/Icon";
-export default function Slilder() {
-  const listSongs = Api__Test.ListSongs;
-
+export default function Slilder({ list_Id }) {
   const Slider = useRef();
   const [Index, setIndex] = useState(0);
   return (
     <div className="FrameSilder">
       <div className="Slider" ref={Slider}>
-        {listSongs.map((item, i) => (
+        {list_Id.map((id, i) => (
           <ItemSlider
             key={i}
-            value={item}
+            id={id}
             classHidden={i === Index ? "" : "ItemSlider_Hidden"}
           />
         ))}
       </div>
       <div className="btnFrameSlider">
         <button
-          onClick={() =>
-            setIndex(Index <= 0 ? listSongs.length - 1 : Index - 1)
-          }
+          onClick={() => setIndex(Index <= 0 ? list_Id.length - 1 : Index - 1)}
         >
           <ArrowLeftIcon />
         </button>
         <button
           onClick={() => {
-            setIndex(Index >= listSongs.length - 1 ? 0 : Index + 1);
+            setIndex(Index >= list_Id.length - 1 ? 0 : Index + 1);
           }}
         >
           <ArrowRightIcon />

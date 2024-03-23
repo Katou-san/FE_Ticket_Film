@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ViewIcon } from "../../icons/Icon";
-// import useAxios from "../../../Hook/Custom_Hook/useAxios_Get";
-// import { Get_User_Avatar } from "../../../Service/Get_File_Service";
 
 export default function ItemArtist({ item }) {
   // const [state, dispatch] = useAxios();

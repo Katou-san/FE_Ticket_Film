@@ -21,7 +21,7 @@
     box-shadow: inherit 0px 0px  10px #000;
     background-color: aliceblue;
     border-radius: 10px;
-    
+   
 }
 
 .Content_Detail img{
@@ -68,6 +68,29 @@
     border-radius: 10px;
     font-weight: 600;
     font-size: 1.2rem;
+    position: relative;
+    z-index: 1;
+    transition: .2s;
+}
+
+.Btn_Deatail_Film button::after{
+    position: absolute;
+    content: "";
+    width: 0%;
+    height: 100%;
+    background-color: #181818;
+    top: 0;
+    left: 0;
+    border-radius: 10px;
+    transition: .2s ease-in-out;
+    z-index: -1;
+}
+.Btn_Deatail_Film button:hover{
+     color: #fff;
+}
+.Btn_Deatail_Film button:hover::after{
+   
+    width: 100%;
 }
 
 .Content_Detail .Content_Left .Info_Film{
@@ -75,7 +98,7 @@
 }
 .Content_Detail .Content_Left .Info_Film p{
     font-size: 1.2rem ;
-    max-width: 450px;
+    max-width: 900px;
     display: inline-block;
     overflow: hidden;
     word-wrap: break-word;
@@ -92,9 +115,10 @@
 
 .info_Film_Right .box_Info h4{
     margin-bottom: 0.8rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .info_Film_Right .box_Info h5{
     margin-bottom: 0.5rem;
+    font-size: 1rem;
 }

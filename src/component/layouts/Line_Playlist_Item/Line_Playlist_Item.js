@@ -1,7 +1,7 @@
 import React from "react";
 import "./Line_Playlist_Item.css";
 import ItemLinePlaylist from "./Item_Playlist";
-function LinePlaylistItem({ title, Value, list_Item }) {
+function LinePlaylistItem({ title, list_Id }) {
   return (
     <div className="FrameList">
       <div className="btnlr">
@@ -10,9 +10,9 @@ function LinePlaylistItem({ title, Value, list_Item }) {
       </div>
       <h1 className="title_List">{title}</h1>
       <div className="listEle">
-        {list_Item.map((item, index) => {
+        {list_Id.map((item, index) => {
           return (
-            <ItemLinePlaylist item={item} key={index} list_Item={list_Item} />
+            <ItemLinePlaylist item={item} key={index} list_Item={list_Id} />
           );
         })}
       </div>

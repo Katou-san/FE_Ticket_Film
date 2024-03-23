@@ -8,7 +8,9 @@ function LineArtistItem({ Value, List_Artist }) {
         <button>1</button>
         <button>2</button>
       </div>
-      <h1 className="title">{Value ? Value.Title : "Artists"}</h1>
+      <h1 className="title" style={{ fontSize: "30px" }}>
+        {Value ? Value.Title : "Diễn viên"}
+      </h1>
       <div className="listArtist">
         {List_Artist.map((item, index) => (
           <ItemArtist key={index} item={item} />

@@ -4,7 +4,7 @@ import { Sigup_S } from "../../../service";
 import { useAxios } from "../../../Hook";
 import { useNavigate } from "react-router-dom";
 import { contextLogin } from "../../../Hook/Context/Context_Login";
-
+import { toast } from "react-toastify";
 // import { toast } from "react-toastify";
 // import { useNavigate } from "react-router-dom";
 // import { Get_Playlist_User, SigupService } from "../../../Service/User_Service";
@@ -39,13 +39,13 @@ function Register({ Value }) {
       dispatch({ type: "REQUEST" });
       Sigup_S(FormValue)
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             dispatch({ type: "SUCCESS" });
             localStorage.setItem("Access_Token", res.data.Access_Token);
+            toast.success("Login Complete");
             Navigate("/");
           } else {
-            console.log(res);
+            toast.error("Signup Error");
           }
         })
         .catch((err) => {

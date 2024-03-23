@@ -5,6 +5,7 @@ import { Login_S } from "../../../service";
 import { useAxios } from "../../../Hook";
 import { useNavigate } from "react-router-dom";
 import { contextLogin } from "../../../Hook/Context/Context_Login";
+import { toast } from "react-toastify";
 const Client_Id = "330b6c67acca4d537d39";
 // Client_Id lay trong github nha
 function Login({ Value }) {
@@ -34,9 +35,10 @@ function Login({ Value }) {
               type: "CHANGE",
               payload: { ...res.data, is_Login: true },
             });
+            toast.success("Login Complete");
             Navigate("/");
           } else {
-            console.log(res);
+            toast.error("Login Fail");
           }
           dispatch({ type: "SUCCESS" });
         })

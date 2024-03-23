@@ -15,12 +15,12 @@ function Header() {
           </div>
         </li>
         <li className="btnNavR">
-          <a href="#Now" style={{ textDecoration: "none" }}>
+          <a href="/#Now" style={{ textDecoration: "none" }}>
             <div className="Content_Nav">Đang chiếu</div>
           </a>
         </li>
         <li className="btnNavR">
-          <a href="#Coming_Soon" style={{ textDecoration: "none" }}>
+          <a href="/#Coming_Soon" style={{ textDecoration: "none" }}>
             <div className="Content_Nav">Sắp chiếu</div>
           </a>
         </li>
