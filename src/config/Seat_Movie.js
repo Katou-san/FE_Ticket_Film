@@ -1,5 +1,22 @@
 const Seat_Number = (row, colum) => {
-  const Row_Id = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"];
+  const Row_Id = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+  ];
   let Array = [];
 
   for (let i = 0; i <= row - 1; ) {

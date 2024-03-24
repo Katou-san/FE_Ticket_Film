@@ -10,12 +10,12 @@ import { Reducer_Change } from "../../Hook/useReduce";
 import ContentRightTicket from "../../component/layouts/Content_Right_Ticket/ContentRightTicket";
 import ContainerMovie from "../../component/layouts/Movie_Seat/ContainerMovie";
 import Note from "../../component/layouts/Movie_Seat/Note";
-import useAxios from "../../Hook/useAxios";
 import {
   Get_Room_ShowTime,
   Get_Time_ShowTime,
 } from "../../service/ShowTime_Service";
 import { useSearchParams } from "react-router-dom";
+import { Get_seats_Date } from "../../service/Ticket_Service";
 export default function PagePayTicket() {
   const [state_VaLue_Index, dispacth_Value_Index] = useReducer(Reducer_Change, {
     Index_Day: 0,
@@ -30,6 +30,7 @@ export default function PagePayTicket() {
 
   const [Array_RoomV, Set_Array_RoomV] = useState([]);
   const [Array_TimeV, Set_Array_TimeV] = useState([]);
+  const [Array_Occupied, Set_Array_Occupied] = useState([]);
 
   const { Index_Day, Index_Room, Index_Time, Array_Seats, status_Form_Seat } =
     state_VaLue_Index;
@@ -59,6 +60,18 @@ export default function PagePayTicket() {
       Set_Array_TimeV([...new Set(res.data.Array_Time)]);
     });
   }, [Film_Id, Index_Day, Index_Room, Array_RoomV]);
+
+  useEffect(() => {
+    Get_seats_Date({
+      Film_Id,
+      Room_Id: Array_RoomV[Index_Room],
+      Time: Array_TimeV[Index_Time]?.time,
+    }).then((res) => {
+      if (res.status === 200) {
+        Set_Array_Occupied(res.data?.Seats);
+      }
+    });
+  }, [Index_Day, Index_Room, Index_Time, Array_TimeV, Array_RoomV]);
 
   return (
     <div className="Frame_Pay_Ticket">
@@ -139,7 +152,7 @@ export default function PagePayTicket() {
         <div className="Content_Seat">
           <Note />
           <ContainerMovie
-            Occupied={"A6"}
+            Array_Occupied={Array_Occupied}
             dispacth_Value_Index={dispacth_Value_Index}
             state_VaLue_Index={state_VaLue_Index}
           />

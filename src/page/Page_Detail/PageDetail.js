@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Page_Deatil.css";
+import { toast } from "react-toastify";
 import LinePlaylistItem from "../../component/layouts/Line_Playlist_Item/Line_Playlist_Item";
 import img from "../../assets/img/avatar.jpg";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -49,7 +50,11 @@ export default function PageDetail() {
           <div className="Btn_Deatail_Film">
             <button
               onClick={() => {
-                Navigate(`/ticket?Film_id=${Film_Id}`);
+                if (localStorage.getItem("Access_Token")) {
+                  Navigate(`/ticket?Film_id=${Film_Id}`);
+                } else {
+                  toast.error("Vui lòng đăng nhập");
+                }
               }}
             >
               Đặt vé

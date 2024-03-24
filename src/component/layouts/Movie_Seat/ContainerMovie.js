@@ -2,13 +2,12 @@ import React from "react";
 import "./Movie_Seat.css";
 import { Seat_Handle, Seat_Number } from "../../../config/Seat_Movie";
 export default function ContainerMovie({
-  Occupied,
+  Array_Occupied,
   dispacth_Value_Index,
   state_VaLue_Index,
 }) {
   const { Array_Seats, Quantity } = state_VaLue_Index;
   const Array_Seat_Setup = Seat_Number(6, 8);
-
   return (
     <div className="container">
       <div className="screen"></div>
@@ -18,7 +17,10 @@ export default function ContainerMovie({
             {row.map((col, i) => {
               return (
                 <div
-                  className={`seat ${Occupied === col && " occupied "} 
+                  className={`seat 
+                  ${Array_Occupied.map((i) => {
+                    return i === col && " occupied ";
+                  })} 
                   
                   ${Array_Seats.map((value) => value === col && " selected ")}`}
                   key={i}

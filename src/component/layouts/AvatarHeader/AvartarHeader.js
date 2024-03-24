@@ -27,7 +27,6 @@ export default function AvartarHeader() {
         id={!is_Login ? "Hidden" : ""}
         onClick={TogoMenu}
       >
-        <img src={is_Login ? "" : ""} alt="" />
         <span>{Name}</span>
       </div>
       <MenuHeader showMenu={StatusMenu} event={TogoMenu} />
