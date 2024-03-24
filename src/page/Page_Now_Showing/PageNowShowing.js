@@ -12,6 +12,7 @@ export default function PageNowShowing() {
   useEffect(() => {
     dispatch({ type: "REQUEST" });
     Get_Film_RC().then((res) => {
+      console.log(res);
       dispatch({ type: "SUCCESS", payload: { data: res.data } });
     });
   }, []);
