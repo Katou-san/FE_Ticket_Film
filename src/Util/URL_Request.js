@@ -1,4 +1,4 @@
-const BE_URL = "https://be-ticket-film.onrender.com";
+const BE_URL = "https://be-ticket-film.onrender.com/api";
 
 const Login = "/user/login";
 const Signup = "/user/signup";
