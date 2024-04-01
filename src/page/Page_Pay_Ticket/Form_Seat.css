@@ -6,7 +6,9 @@
 .Form_Choose_Seat{
     transform: translateY(0);
     position: fixed;
-    background-color: black;
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29); 
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
     width: 100%;
     height: 100vh; 
     margin-top: -6%;
@@ -15,7 +17,6 @@
     align-items: center;
     justify-items: center;
     transition: .2s;
-
 }
 
 

@@ -1,38 +1,37 @@
 import React, { useEffect, useState } from "react";
-import img from "../../../assets/img/avatar.jpg";
+import img from "../../../assets/img/film.jpeg";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Get_Film_Id } from "../../../service/Film_Service";
 import useAxios from "../../../Hook/useAxios";
 import { Create_Ticket_Date } from "../../../service/Ticket_Service";
+import {
+  Get_Price_ShowTime,
+  Get_Time_ShowTime,
+} from "../../../service/ShowTime_Service";
+import { Convert_DateToString } from "../../../Util/Get_Time";
 export default function ContentRightTicket({
   state_VaLue_Index,
   dispacth_Value_Index,
   Array_Data,
 }) {
   const Navigate = useNavigate();
-  const {
-    Index_Day,
-    Index_Room,
-    Index_Time,
-    Array_Seats,
-    Quantity,
-    Price,
-    Total,
-  } = state_VaLue_Index;
+  const { Index_Day, Index_Room, Index_Time, Array_Seats, Quantity, Total } =
+    state_VaLue_Index;
   const { Array_Day, Array_RoomV, Array_TimeV } = Array_Data;
 
   const [searchParams] = useSearchParams();
   const Film_Id = searchParams.get("Film_id");
 
   const [state, dispatch] = useAxios();
-  const { name, poster, time } = state.data;
+  const { name_Film, poster, time, Price } = state.data;
   const [URL_Result, Set_URL_Result] = useState("");
+
   useEffect(() => {
     Get_Film_Id(Film_Id).then((res) => {
       dispatch({ type: "SUCCESS", payload: { data: res.data } });
     });
-  }, [Film_Id]);
+  }, [Index_Day]);
 
   const Hanlde_Quantity = (status) => {
     if (Quantity < 10 && status === "up") {
@@ -76,7 +75,7 @@ export default function ContentRightTicket({
           }
         });
       } else {
-        toast.error("Please choose more Seat");
+        toast.error("Vui lòng thực hiện đủ quy trình");
       }
     } else {
       toast.error("vui lòng đăng nhập");
@@ -88,7 +87,7 @@ export default function ContentRightTicket({
       <div className="Frame_Img_Ticket">
         <img src={img} alt="" />
       </div>
-      <h1>{name}</h1>
+      <h1>{name_Film}</h1>
       <div className="Content_Ticket">
         <h3>
           Số Lượng:
@@ -98,8 +97,7 @@ export default function ContentRightTicket({
             <span onClick={() => Hanlde_Quantity("up")}>+</span>
           </span>
         </h3>
-        <h3>Giá: {Price}</h3>
-
+        <h3>Giá: {Price ? Price : 0}</h3>
         <h3>Tổng: {Total}</h3>
       </div>
       <button className="btn_Pay_Ticket" onClick={Submit_Pay_Ticket}>

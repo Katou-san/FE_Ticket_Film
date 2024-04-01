@@ -8,7 +8,11 @@
     justify-content: center;
     justify-items: center;
     width:80%;
-    background-color:rgba(203, 155, 92, 0.676);
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29); 
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); 
+    background-position: 50% 50%;
+    background-size: 1000px;
     border-radius: 40px;
     color: #A5D7E8;
     transition: .5s;
@@ -44,6 +48,7 @@
 }
 
 #notSearchValue{
+    background-position: 10% 30%;
     width: 60%;
     grid-template-columns: 20% 80% 0%;
 }

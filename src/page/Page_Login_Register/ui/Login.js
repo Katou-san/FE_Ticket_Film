@@ -45,6 +45,10 @@ function Login({ Value }) {
         .catch((err) => {
           dispatch({ type: "ERROR", payload: { Error: err } });
         });
+    } else {
+      const Error_Value = Login_Error(FormLogin).Detail_Error;
+      let Arraykey = Object.keys(Error_Value);
+      Arraykey.map((key) => toast.error(Error_Value[key]));
     }
   };
 

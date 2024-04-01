@@ -5,14 +5,6 @@ import { useAxios } from "../../../Hook";
 import { useNavigate } from "react-router-dom";
 import { contextLogin } from "../../../Hook/Context/Context_Login";
 import { toast } from "react-toastify";
-// import { toast } from "react-toastify";
-// import { useNavigate } from "react-router-dom";
-// import { Get_Playlist_User, SigupService } from "../../../Service/User_Service";
-// import { User_Init } from "../../../Modules/Init_Provider";
-// import { Check_Error_Register } from "../../../Modules/Handle_Login";
-// import { LoadingSVGWatting } from "../../../Component/Logo_Icon/Loading";
-// import { contextLogin } from "../../../Hook/index_Context";
-// import useAxios from "../../../Hook/Custom_Hook/useAxios_Get";
 
 function Register({ Value }) {
   const { state_Login, dispatch_Login } = useContext(contextLogin);
@@ -42,15 +34,24 @@ function Register({ Value }) {
           if (res.status === 200) {
             dispatch({ type: "SUCCESS" });
             localStorage.setItem("Access_Token", res.data.Access_Token);
-            toast.success("Login Complete");
+            dispatch_Login({
+              type: "CHANGE",
+              payload: { ...res.data, is_Login: true },
+            });
+            toast.success("SignUp Complete");
             Navigate("/");
           } else {
-            toast.error("Signup Error");
+            console.log(res.message);
+            toast.error(res.message);
           }
         })
         .catch((err) => {
           dispatch({ type: "ERROR", payload: { error: err.messeage } });
         });
+    } else {
+      const Error_Value = Register_Error(FormValue).Detail_Error;
+      let Arraykey = Object.keys(Error_Value);
+      Arraykey.map((key) => toast.error(Error_Value[key]));
     }
   };
 

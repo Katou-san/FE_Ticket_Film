@@ -3,11 +3,11 @@ import { useEffect, useReducer } from "react";
 function reducerAxios(state, action) {
   switch (action.type) {
     case "REQUEST":
-      return { ...state, Is_Loading: true };
+      return { ...state, is_Loading: true };
     case "SUCCESS":
-      return { ...state, Is_Loading: false, ...action.payload };
+      return { ...state, is_Loading: false, ...action.payload };
     case "ERROR":
-      return { ...state, Is_Loading: false, ...action.payload };
+      return { ...state, is_Loading: false, ...action.payload };
     default:
       break;
   }

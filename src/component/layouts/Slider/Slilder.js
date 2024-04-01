@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import ItemSlider from "./ItemSlider";
 import "./Silder.css";
-import { Api__Test } from "../../../Test/Api_Test";
 import { ArrowRightIcon, ArrowLeftIcon } from "../../icons/Icon";
 export default function Slilder({ list_Id }) {
   const Slider = useRef();

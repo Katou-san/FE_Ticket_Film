@@ -41,20 +41,23 @@
 
 .FrameBtnLogin .optionNav
 {
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
     position: absolute;
     padding-top: 5px;
-    bottom: -140%;
+    top: 150%;
     left: 0;
     font-size: 18px;
-    width: 0%;
+    width: 100%;
     background-color:#214372b5;
     backdrop-filter: blur(3px);
     border-radius: 10px;
     padding-bottom: 10px;
     overflow: hidden;
-    transition: .5s;
+    transition: .2s;
     opacity: 1;
-    transform: translateX(300px);
+    transform: translateX(400px);
     z-index: -1;
     opacity: 0;
 }
@@ -71,7 +74,7 @@
 .FrameBtnLogin .optionNav ul li span{
     transition: .5s;
     height: 100%;
-     overflow: hidden;
+    overflow: hidden;
 }
 
 .FrameBtnLogin .optionNav ul li 

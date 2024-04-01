@@ -11,11 +11,14 @@ import ContentRightTicket from "../../component/layouts/Content_Right_Ticket/Con
 import ContainerMovie from "../../component/layouts/Movie_Seat/ContainerMovie";
 import Note from "../../component/layouts/Movie_Seat/Note";
 import {
+  Get_Price_ShowTime,
   Get_Room_ShowTime,
   Get_Time_ShowTime,
 } from "../../service/ShowTime_Service";
 import { useSearchParams } from "react-router-dom";
 import { Get_seats_Date } from "../../service/Ticket_Service";
+import { Get_ST_Price } from "../../Util";
+import { wait } from "@testing-library/user-event/dist/utils";
 export default function PagePayTicket() {
   const [state_VaLue_Index, dispacth_Value_Index] = useReducer(Reducer_Change, {
     Index_Day: 0,
@@ -37,6 +40,7 @@ export default function PagePayTicket() {
   const [searchParams] = useSearchParams();
   const Film_Id = searchParams.get("Film_id");
   const Array_Day = getDaysInMonth(
+    new Date().getDate(),
     new Date().getMonth(),
     new Date().getFullYear()
   );
@@ -46,10 +50,10 @@ export default function PagePayTicket() {
       Film_Id,
       Time: Convert_DateToString(Array_Day[Index_Day]),
     }).then((res) => {
-      const Array_R = [...new Set(res.data.Array_Room)];
+      const Array_R = [...new Set(res.data.Array_Room)].sort();
       Set_Array_RoomV(Array_R);
     });
-  }, [Film_Id, Index_Day]);
+  }, [Index_Day, Film_Id, state_VaLue_Index]);
 
   useEffect(() => {
     Get_Time_ShowTime({
@@ -57,9 +61,13 @@ export default function PagePayTicket() {
       Time: Convert_DateToString(Array_Day[Index_Day]),
       Room_Id: Array_RoomV[Index_Room],
     }).then((res) => {
-      Set_Array_TimeV([...new Set(res.data.Array_Time)]);
+      if (res.status === 200) {
+        Set_Array_TimeV([...new Set(res.data.Array_Time)]);
+      } else {
+        Set_Array_TimeV([]);
+      }
     });
-  }, [Film_Id, Index_Day, Index_Room, Array_RoomV]);
+  }, [state_VaLue_Index]);
 
   useEffect(() => {
     Get_seats_Date({
@@ -69,9 +77,11 @@ export default function PagePayTicket() {
     }).then((res) => {
       if (res.status === 200) {
         Set_Array_Occupied(res.data?.Seats);
+      } else {
+        Set_Array_Occupied([]);
       }
     });
-  }, [Index_Day, Index_Room, Index_Time, Array_TimeV, Array_RoomV]);
+  }, [state_VaLue_Index]);
 
   return (
     <div className="Frame_Pay_Ticket">
@@ -79,6 +89,7 @@ export default function PagePayTicket() {
         <div className="List_Day_Container">
           {Array_Day.map((day, i) => (
             <ContentDay
+              Array_Day={Array_Day}
               key={i}
               Value={day}
               index={i}
@@ -88,7 +99,9 @@ export default function PagePayTicket() {
           ))}
         </div>
 
-        {Array_RoomV.length === 0 && <h1>Đang không chiếu</h1>}
+        {Array_RoomV.length === 0 && (
+          <div className="no_data_Pay">Ngày này không có xuất chiếu</div>
+        )}
         {Array_RoomV.length !== 0 && (
           <>
             <div className="Room_Frame">

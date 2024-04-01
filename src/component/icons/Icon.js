@@ -1,5 +1,20 @@
 import React from "react";
 const typeActive = "#37cdff";
+
+function ViewIcon2({ w, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={w || 24}
+      height={w || 24}
+      fill={color || "white"}
+      viewBox="0 0 576 512"
+    >
+      <path d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z" />
+    </svg>
+  );
+}
+
 function CompleteIcon({ w, color }) {
   return (
     <svg
@@ -577,6 +592,66 @@ function MinusIcon({ w, color }) {
     </svg>
   );
 }
+
+function CircleNotchIcon({ w, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height={w || 24}
+      fill={color || "#fff"}
+      width={w || 24}
+      viewBox="0 0 512 512"
+    >
+      <path d="M222.7 32.1c5 16.9-4.6 34.8-21.5 39.8C121.8 95.6 64 169.1 64 256c0 106 86 192 192 192s192-86 192-192c0-86.9-57.8-160.4-137.1-184.1c-16.9-5-26.6-22.9-21.5-39.8s22.9-26.6 39.8-21.5C434.9 42.1 512 140 512 256c0 141.4-114.6 256-256 256S0 397.4 0 256C0 140 77.1 42.1 182.9 10.6c16.9-5 34.8 4.6 39.8 21.5z" />
+    </svg>
+  );
+}
+
+function BellIcon({ w, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height={w || 24}
+      fill={color || "#fff"}
+      width={w || 24}
+      viewBox="0 0 448 512"
+    >
+      <path d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
+    </svg>
+  );
+}
+
+function LoadingIcon({ w, color }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        margin: "auto",
+        display: "block",
+        shapeRendering: "auto",
+      }}
+      width={w || "100px"}
+      height={w || "100px"}
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid"
+    >
+      <path
+        d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50"
+        fill={color || "white"}
+        stroke="none"
+      >
+        <animateTransform
+          attributeName="transform"
+          type="rotate"
+          dur="1s"
+          repeatCount="indefinite"
+          keyTimes="0;1"
+          values="0 50 51;360 50 51"
+        ></animateTransform>
+      </path>
+    </svg>
+  );
+}
 export {
   CompleteIcon,
   ErrorIcon,
@@ -613,4 +688,8 @@ export {
   FailIcon,
   ViewIcon,
   MinusIcon,
+  ViewIcon2,
+  CircleNotchIcon,
+  BellIcon,
+  LoadingIcon,
 };

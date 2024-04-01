@@ -1,0 +1,308 @@
+.Frame_List_Ticket{
+    position: fixed;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100vh;
+    background: #0f0c29;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: 100%;
+    transform: translate();
+    transition: .2s;
+}
+
+.hident_Form_Ticket{
+    transition: .2s;
+    transform: translateY(100%) !important;
+}
+
+
+.Frame_List_Ticket  .List_Item_Ticket{
+    position: relative;
+    width: 100%;
+    display: grid;
+    justify-items: center;
+    overflow: auto;
+}
+
+.listItem_Time{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 80px;
+}
+
+.green{
+  color: #3be096;
+}
+.red{
+  color: #e91e63;
+}
+
+.listItem_Time .Pay_Day{
+  position: absolute;
+  top: 0%;
+  left: 5%;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.Frame_List_Ticket  .Close_Icon{
+    position: absolute;
+    cursor: pointer;
+    top: 40%;
+    right: 20%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #f75555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+
+.Frame_List_Ticket .Frame_Ticket{
+    position: relative;
+    width: 50%;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 100%;
+}
+
+
+  
+.Frame_List_Ticket .ticket {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    justify-items: center;
+    transition: .2s;
+    cursor: pointer;
+    background-color: #fff;
+  }
+
+.blur_Item{
+  filter: blur(5px) !important;
+}
+
+.Frame_Ticket .noite{
+  position: absolute;
+  display: grid;
+  width: 100%;
+  max-width: 500px;
+  height: 155px;
+  top: 8%;
+  /* transform: translateY(-50%); */
+  place-items: center;
+  z-index: 1000;
+  font-size: 50px;
+  color: #ff7474;
+  font-weight: 600;
+  background-color: #3f3f3f6c;
+  border-radius: 10px;
+}
+.Frame_List_Ticket .Frame_Ticket{
+  width: 100%;
+}
+.Frame_List_Ticket .Frame_Ticket .ticket:hover{
+    height: 300px;
+    max-width: 700px;
+}
+
+.Frame_List_Ticket .Frame_Ticket .ticket:hover .stub{
+    background-position: 50% 50% !important;
+}
+
+  .Frame_List_Ticket  .stub{
+    width: 100%;
+    height: 100px;
+    background-size: cover;
+    background-position: 0% !important ;
+    transition: .2s;
+  }
+  
+  .Frame_List_Ticket  .stub {
+    border-radius: 20px;
+    background: #f06292;
+    height: 100%;
+    width: 100%;
+    color: white;
+    padding: 20px;
+    position: relative;
+    border: 2px solid #1b1b1b;
+    border-right: none;
+  
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-top: 20px solid #e91e63;
+      border-left: 20px solid #f0629100;
+      width: 0;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-bottom: 20px solid #e91e63;
+      border-left: 20px solid #f0629100;
+      width: 0;
+    }
+  
+    .Frame_List_Ticket .top {
+      display: flex;
+      align-items: center;
+      height: 40px;
+      text-transform: uppercase;
+  
+      .line {
+        display: block;
+        background: #fff;
+        height: 40px;
+        width: 3px;
+        margin: 0 20%;
+      }
+      .num {
+        font-size: 30px;
+        span {
+          color: #000;
+        }
+      }
+    }
+    .number {
+      position: absolute;
+      left: 10%;
+      font-size: 70px;
+    }
+    .invite {
+      position: absolute;
+      right: 30%;
+      bottom: 5%;
+      color: #000;
+      width: 20%;
+  
+      &:before {
+        content: "";
+        background: #ffffff;
+        display: block;
+        width: 40px;
+        height: 3px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  
+  .Frame_List_Ticket .check {
+    border-radius: 20px;
+    background: #fff;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    position: relative;
+    border: 2px solid #1b1b1b;
+    border-left: none;
+  
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 20px solid #e91e63;
+      border-right: 20px solid #fff;
+      width: 0;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-bottom: 20px solid #e91e63;
+      border-right: 20px solid #fff;
+      width: 0;
+    }
+  
+    .big {
+      position: absolute;
+      top: 20%;
+      font-size: 30px;
+      font-weight: 900;
+      line-height: 0.8em;
+      margin-left: 20px;
+      transition: .2s;
+    }
+    .Main_Content {
+      position: absolute;
+      top: 35%;
+      margin-left: 20px;
+      color: #252525;
+      font-size: 20px;
+      height: 0;
+      overflow: hidden;
+      transition: .2s;
+      display: grid;
+      width: 100%;
+      grid-template-columns: 50% 50%;
+      h5{
+        margin-top: 10px;
+        span{
+            font-weight: 500;
+        }
+      }
+    }
+    .info {
+      display: grid;
+      grid-template-columns: 40% 30% 30%;
+      position: absolute;
+      bottom: 12%;
+      font-size: 12px;
+      width: 100%;
+      transition: .2s;
+      section {
+        width: 100%;
+        margin-right: 50px;
+        &:before {
+          content: "";
+          background: #ef5658;
+          display: block;
+          width: 40px;
+          height: 3px;
+          margin-bottom: 5px;
+        }
+        p{
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .title {
+          font-size: 15px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+  
+
+  .Frame_List_Ticket .ticket:hover .check .info{
+    bottom: 10%;
+  }
+  .Frame_List_Ticket .ticket:hover .check .Main_Content{
+    height: 100%;
+  }
+
+  .Frame_List_Ticket .ticket:hover .check .big{
+    top: 10%;
+    font-size: 40px;
+  }
+    

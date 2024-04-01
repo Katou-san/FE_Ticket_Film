@@ -10,5 +10,7 @@ export {
   Get_ST_Time,
   Get_Seats_Ticket,
   Create_Ticket,
+  Get_Film_Ticket,
+  Get_ST_Price,
 } from "./URL_Request";
 export { Date_Handle } from "./Get_Time";

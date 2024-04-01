@@ -63,11 +63,11 @@
     justify-items: center;
     transition: 0.2s;
   }
-  
+   
   .itemE {
     position: relative;
-    width: 70%;
-    min-height: 280px;
+    width: 80%;
+    min-height: 400px;
     border-radius: 15px;
     text-align: center;
     transition: 0.5s;
@@ -76,6 +76,8 @@
     overflow: hidden;
     transition: .2s;
     margin-bottom: 20px;
+    max-height: 340px;
+    cursor: pointer;
   }
 
 
@@ -84,7 +86,7 @@
     height: 100%;
     overflow: hidden;
     border-bottom-left-radius:50px;
-    border-bottom-right-radius:10px ;
+    border-bottom-right-radius:20px ;
     transition: .2s;
   }
 
@@ -103,11 +105,10 @@
     position: relative;
     display: grid;
     grid-template-columns: 100%;
-    max-height: 50px;
     align-items: center;
     gap: 10px;
     padding: 10px;
-    transform: translateY(0px);
+    transform: translateY(-10px);
     background-color: #ffffff;
     border-top-left-radius:10px ;
     transition: .2s;
@@ -115,24 +116,29 @@
   }
 
   .itemE .Conten_ItemE h3{
-    font-size: 20px;
+    font-size: 25px;
   }
+
+  .itemE .Conten_ItemE h5{
+    font-size: 16px;
+   text-align: start;
+  }
+
 
   .itemE:hover {
     background-color: #ffffff;
   }
   .itemE:hover .Farme_Img_Item{
-    border-bottom-right-radius:300px ;
+
     border-bottom-left-radius:0;
   }
   .itemE:hover img{
-    filter: blur(1px);
     transform: scale(1.1);
     
   } 
   .itemE:hover .Conten_ItemE{
     border-top-left-radius:30px ;
-    transform: translateY(-10px);
+    transform: translateY(-80px);
     cursor: pointer;
   }
 
