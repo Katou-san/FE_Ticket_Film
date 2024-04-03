@@ -30,7 +30,7 @@ export default function ContentRightTicket({
   useEffect(() => {
     Get_Film_Id(Film_Id).then((res) => {
       dispatch({ type: "SUCCESS", payload: { data: res.data } });
-      Get_Img_Film("poster-1711982990039.jpg").then((response) => {
+      Get_Img_Film(res.data.poster).then((response) => {
         if (response.status === 200) {
           Set_URL_Result(URL.createObjectURL(response.data));
         } else {
@@ -70,7 +70,7 @@ export default function ContentRightTicket({
           Film_Id,
           Date: Array_Day[Index_Day],
           Room_Id: Array_RoomV[Index_Room],
-          Time: Array_TimeV[Index_Time].time,
+          Time: Array_TimeV[Index_Time],
           Quantity,
           Seats: Array_Seats,
           Price,

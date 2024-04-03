@@ -13,7 +13,7 @@ export default function ItemLinePlaylist({ item, list_Item }) {
   useEffect(() => {
     Get_Film_Id(item).then((res) => {
       dispatch({ type: "SUCCESS", payload: { data: res.data } });
-      Get_Img_Film("poster-1711982990039.jpg").then((response) => {
+      Get_Img_Film(res.data.poster).then((response) => {
         if (response.status === 200) {
           Set_URL_Result(URL.createObjectURL(response.data));
         } else {

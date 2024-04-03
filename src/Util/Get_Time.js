@@ -13,20 +13,12 @@ function getDaysInMonth(day, month, year) {
       Day: date.getDate(),
     });
 
-    // if (date.setDate(date.getDate() + 1))
-
     date.setDate(date.getDate() + 1);
   }
 
   return days;
 }
 const Convert_DateToString = (Value) => {
-  // return new Date(
-  //   `${Value.Year}-${
-  //     Value.Week_Month > 9 ? Value.Week_Month : `0${Value.Week_Month}`
-  //   }-${Value.Day > 9 ? Value.Day : `0${Value.Day}`}T21:00:00.451Z`
-  // );
-
   return new Date(Value.Year + "-" + Value.Week_Month + "-" + Value.Day);
 };
 

@@ -1,4 +1,4 @@
-const BE_URL = "http://localhost:8080/api";
+const BE_URL = "https://be-ticket-film.onrender.com/api";
 // "http://localhost:8080/api";
 // "https://be-ticket-film.onrender.com/api"
 const Login = "/user/login";

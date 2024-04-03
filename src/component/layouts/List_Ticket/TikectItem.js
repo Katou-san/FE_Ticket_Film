@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img from "../../../assets/img/avatar.jpg";
 import { Date_Handle } from "../../../Util";
-import { Get_Film_Id } from "../../../service/Film_Service";
+import { Get_Film_Id, Get_Img_Film } from "../../../service/Film_Service";
 export default function TikectItem({ ticket }) {
   const {
     Duration,
@@ -18,16 +18,19 @@ export default function TikectItem({ ticket }) {
 
   const Showtime_times = Date_Handle(Showtime_Time);
   const Current_time = Date_Handle(new Date());
+  const [Url, Set_Url] = useState("");
 
-  console.log("showtime >>>" + Showtime_Time);
-  console.log(Current_time);
+  useEffect(() => {
+    Get_Img_Film(poster).then((res) => Set_Url(URL.createObjectURL(res.data)));
+  }, [tiket_Id]);
+
   const check_Date = () => {
     if (Showtime_times.year === Current_time.year) {
       if (Showtime_times.month >= Current_time.month) {
         if (Current_time.day < Showtime_times.day) {
           return true;
         } else if (Current_time.day === Showtime_times.day) {
-          if (Current_time.hour < Showtime_times.hour) {
+          if (Current_time.hour <= Showtime_times.hour) {
             return true;
           } else {
             return false;
@@ -49,14 +52,10 @@ export default function TikectItem({ ticket }) {
     <div className="Frame_Ticket">
       {!check_Date() && <div className="noite">Đã quá hạn</div>}
 
-      <div
-        className={`ticket ${
-          Current_time.year !== Showtime_times.year ? "blur_Item" : ""
-        }`}
-      >
+      <div className={`ticket ${!check_Date() ? "blur_Item" : ""}`}>
         <div
           className="stub"
-          style={{ backgroundImage: `url("${img}")`, backgroundSize: "cover" }}
+          style={{ backgroundImage: `url("${Url}")`, backgroundSize: "cover" }}
         >
           <div className="top"></div>
           <div className="number">{tiket_Id}</div>

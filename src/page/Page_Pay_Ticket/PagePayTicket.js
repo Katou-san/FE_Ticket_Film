@@ -49,8 +49,12 @@ export default function PagePayTicket() {
       Film_Id,
       Time: Convert_DateToString(Array_Day[Index_Day]),
     }).then((res) => {
-      const Array_R = [...new Set(res.data.Array_Room)].sort();
-      Set_Array_RoomV(Array_R);
+      if (res.status === 200) {
+        const Array_R = [...new Set(res.data.Array_Room)].sort();
+        Set_Array_RoomV(Array_R);
+      } else {
+        Set_Array_RoomV([]);
+      }
     });
   }, [Index_Day, Film_Id, state_VaLue_Index]);
 
@@ -72,7 +76,7 @@ export default function PagePayTicket() {
     Get_seats_Date({
       Film_Id,
       Room_Id: Array_RoomV[Index_Room],
-      Time: Array_TimeV[Index_Time]?.time,
+      Time: Array_TimeV[Index_Time],
     }).then((res) => {
       if (res.status === 200) {
         Set_Array_Occupied(res.data?.Seats);

@@ -96,7 +96,9 @@ function Register({ Value }) {
         <div className="inputText">
           <label htmlFor="SRPass">Phone</label>
           <input
-            type="number"
+            type="text"
+            minlength="10"
+            maxlength="10"
             required
             value={FormValue.Phone}
             onChange={(e) => Set_Change_Value({ Phone: e.target.value })}

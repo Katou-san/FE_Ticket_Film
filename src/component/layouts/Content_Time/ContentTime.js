@@ -7,7 +7,7 @@ export default function ContentTime({
   time,
   dispacth_Value_Index,
 }) {
-  const Time = Date_Handle(time.time);
+  const Time = Date_Handle(time);
   return (
     <div
       className={`Content_Time ${Current_Index === i ? "Active_Day" : ""}`}
