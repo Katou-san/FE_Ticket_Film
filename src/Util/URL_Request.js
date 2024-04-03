@@ -7,6 +7,8 @@ const Auth = "/user/auth";
 //film
 const Get_Film = "/film/get";
 const Recommed = "/film/get-recommend";
+const Search = "/film/search";
+const Get_Img = "/send/film-img";
 //Show time
 const Get_ST_Room = "/show-time/get-Room";
 const Get_ST_Time = "/show-time/get-Time";
@@ -29,4 +31,6 @@ export {
   Create_Ticket,
   Get_Film_Ticket,
   Get_ST_Price,
+  Search,
+  Get_Img,
 };

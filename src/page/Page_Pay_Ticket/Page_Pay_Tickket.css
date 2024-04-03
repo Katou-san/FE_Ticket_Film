@@ -7,7 +7,10 @@
     grid-template-columns: 80% 20%;
     justify-items: center;
 }
-
+.Frame_Pay_Ticket .Out{
+    background-color: #666666;
+    color: #474747;
+}
 .no_data_Pay{
     width: 100%;
     height: 50%;

@@ -5,7 +5,13 @@ import { ToastContainer, toast } from "react-toastify";
 import { ContextLoginProvider } from "./Hook/Context/Context_Login";
 import { ContextFormProvider } from "./Hook/Context/Context_Form";
 import reportWebVitals from "./reportWebVitals";
-import { PageLogin, PageDetail, PageNowShowing, PagePayTicket } from "./page";
+import {
+  PageLogin,
+  PageDetail,
+  PageNowShowing,
+  PagePayTicket,
+  PageResult,
+} from "./page";
 import App from "./App";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -20,6 +26,7 @@ root.render(
             <Route path="/" element={<PageNowShowing />}></Route>
             <Route path="/detail" element={<PageDetail />}></Route>
             <Route path="/ticket" element={<PagePayTicket />}></Route>
+            <Route path="/result" element={<PageResult />}></Route>
           </Route>
         </Routes>
         <ToastContainer

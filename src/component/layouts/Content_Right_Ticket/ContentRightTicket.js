@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import img from "../../../assets/img/film.jpeg";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Get_Film_Id } from "../../../service/Film_Service";
+import { Get_Film_Id, Get_Img_Film } from "../../../service/Film_Service";
 import useAxios from "../../../Hook/useAxios";
 import { Create_Ticket_Date } from "../../../service/Ticket_Service";
 import {
@@ -24,12 +24,19 @@ export default function ContentRightTicket({
   const Film_Id = searchParams.get("Film_id");
 
   const [state, dispatch] = useAxios();
-  const { name_Film, poster, time, Price } = state.data;
+  const { name_Film, poster, Price = 1 } = state.data;
   const [URL_Result, Set_URL_Result] = useState("");
 
   useEffect(() => {
     Get_Film_Id(Film_Id).then((res) => {
       dispatch({ type: "SUCCESS", payload: { data: res.data } });
+      Get_Img_Film("poster-1711982990039.jpg").then((response) => {
+        if (response.status === 200) {
+          Set_URL_Result(URL.createObjectURL(response.data));
+        } else {
+          Set_URL_Result("");
+        }
+      });
     });
   }, [Index_Day]);
 
@@ -85,7 +92,7 @@ export default function ContentRightTicket({
   return (
     <>
       <div className="Frame_Img_Ticket">
-        <img src={img} alt="" />
+        <img src={URL_Result} alt="" />
       </div>
       <h1>{name_Film}</h1>
       <div className="Content_Ticket">
@@ -98,7 +105,7 @@ export default function ContentRightTicket({
           </span>
         </h3>
         <h3>Giá: {Price ? Price : 0}</h3>
-        <h3>Tổng: {Total}</h3>
+        <h3>Tổng: {Price * Quantity}</h3>
       </div>
       <button className="btn_Pay_Ticket" onClick={Submit_Pay_Ticket}>
         Mua vé

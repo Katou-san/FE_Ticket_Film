@@ -6,12 +6,28 @@ export default function ContentDay({
   Value,
   Current_Index,
   dispacth_Value_Index,
+  Array_Day = [],
 }) {
+  const Current = Date_Handle(new Date());
+
   return (
     <div
-      className={`Content_Day ${Current_Index === index ? "Active_Day" : ""}`}
+      className={`Content_Day ${
+        Value.Date < Current.day
+          ? "Out"
+          : Current_Index === index
+          ? "Active_Day"
+          : ""
+      }`}
       onClick={() => {
-        dispacth_Value_Index({ type: "CHANGE", payload: { Index_Day: index } });
+        if (Value.Date < Current.day) {
+          dispacth_Value_Index({ type: "CHANGE", payload: {} });
+        } else {
+          dispacth_Value_Index({
+            type: "CHANGE",
+            payload: { Index_Day: index },
+          });
+        }
       }}
     >
       <div className="Month_WDay">

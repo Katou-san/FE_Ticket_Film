@@ -14,6 +14,7 @@ export default function ListTicket({ Ticket_Form, dispatch_Form }) {
     dispacth({ type: "REQUEST" });
     Get_Ticket().then((res) => {
       if (res.status === 200) {
+        console.log(res.data);
         Set_List_ticket(res.data);
         let temp = [];
         res.data.map((ticket) => temp.push(ticket.creation_time));
@@ -50,7 +51,15 @@ export default function ListTicket({ Ticket_Form, dispatch_Form }) {
             <div className="listItem_Time" key={i}>
               <div
                 className={`Pay_Day ${
-                  time.day >= Current_time.day ? "green" : "red"
+                  time.month === Current_time.month
+                    ? time.day >= Current_time.day
+                      ? "green"
+                      : "red"
+                    : time.month < Current_time.month
+                    ? time.day < Current_time.day
+                      ? "green"
+                      : "red"
+                    : "green"
                 }`}
               >
                 Ngày mua:
@@ -63,7 +72,7 @@ export default function ListTicket({ Ticket_Form, dispatch_Form }) {
                   " " +
                   time.hour +
                   ":" +
-                  time.minute}
+                  String(time.minute)}
               </div>
               {List_ticket.map((ticket, i) => {
                 if (timecreate === ticket.creation_time)

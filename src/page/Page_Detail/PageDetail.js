@@ -6,7 +6,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { Api__Test } from "../../Test/Api_Test";
 import LineArtistItem from "../../component/layouts/Line_Artist_Item/Line_Artist_Item";
 import useAxios from "../../Hook/useAxios";
-import { Get_Film_Id } from "../../service/Film_Service";
+import { Get_Film_Id, Get_Img_Film } from "../../service/Film_Service";
 import IconLoading from "../../component/icons/IconF/IconLoading";
 import { Date_Handle } from "../../Util";
 import { Get_Current_Date } from "../../Util/Get_Time";
@@ -34,6 +34,13 @@ export default function PageDetail() {
   useEffect(() => {
     Get_Film_Id(Film_Id).then((res) => {
       dispatch({ type: "SUCCESS", payload: { data: res.data } });
+      Get_Img_Film("poster-1711982990039.jpg").then((response) => {
+        if (response.status === 200) {
+          Set_URL_Result(URL.createObjectURL(response.data));
+        } else {
+          Set_URL_Result("");
+        }
+      });
     });
   }, [Film_Id]);
   return (
@@ -50,15 +57,13 @@ export default function PageDetail() {
             </div>
           </div>
           <div className="Content_Right">
-            <img src={img} alt="" />
+            <img src={URL_Result} alt="" />
             <div className="Btn_Deatail_Film">
               <button
                 onClick={() => {
                   const lauch = Date_Handle(launch_date);
                   const fisn = Date_Handle(finish_date);
                   const current = Get_Current_Date();
-                  console.log(lauch);
-                  console.log(current);
                   if (lauch.month === current.month) {
                     if (lauch.day <= current.day && current.day <= fisn.day) {
                       if (localStorage.getItem("Access_Token")) {

@@ -8,6 +8,7 @@ function getDaysInMonth(day, month, year) {
     days.push({
       Year: date.getFullYear(),
       Week_Month: month + 1,
+      Date: date.getDate(),
       Week_Day: weekday[date.getDay()],
       Day: date.getDate(),
     });

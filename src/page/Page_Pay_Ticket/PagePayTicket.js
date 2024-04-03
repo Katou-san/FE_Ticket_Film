@@ -17,7 +17,6 @@ import {
 } from "../../service/ShowTime_Service";
 import { useSearchParams } from "react-router-dom";
 import { Get_seats_Date } from "../../service/Ticket_Service";
-import { Get_ST_Price } from "../../Util";
 import { wait } from "@testing-library/user-event/dist/utils";
 export default function PagePayTicket() {
   const [state_VaLue_Index, dispacth_Value_Index] = useReducer(Reducer_Change, {
@@ -168,6 +167,7 @@ export default function PagePayTicket() {
             Array_Occupied={Array_Occupied}
             dispacth_Value_Index={dispacth_Value_Index}
             state_VaLue_Index={state_VaLue_Index}
+            Array_TimeV={Array_TimeV}
           />
           <div
             className="Icon_Close"

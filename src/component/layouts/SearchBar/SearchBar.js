@@ -8,7 +8,7 @@ export default function SearchBar() {
 
   const OnSubmit = (e) => {
     e.preventDefault();
-    Navigate(`/search?value=${ValueSearch.replaceAll(" ", "_の_")}`);
+    Navigate(`/result?value=${ValueSearch}`);
   };
   return (
     <form

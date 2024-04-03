@@ -41,7 +41,6 @@ function Register({ Value }) {
             toast.success("SignUp Complete");
             Navigate("/");
           } else {
-            console.log(res.message);
             toast.error(res.message);
           }
         })
@@ -97,7 +96,7 @@ function Register({ Value }) {
         <div className="inputText">
           <label htmlFor="SRPass">Phone</label>
           <input
-            type="password"
+            type="number"
             required
             value={FormValue.Phone}
             onChange={(e) => Set_Change_Value({ Phone: e.target.value })}
@@ -108,7 +107,7 @@ function Register({ Value }) {
         <div className="inputText">
           <label htmlFor="SRPass">Address</label>
           <input
-            type="password"
+            type="text"
             required
             value={FormValue.Address}
             onChange={(e) => Set_Change_Value({ Address: e.target.value })}

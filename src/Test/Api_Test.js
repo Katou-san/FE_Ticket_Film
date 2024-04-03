@@ -71,33 +71,5 @@ export const Api__Test = {
       Time: "",
       Lyrics: "",
     },
-    {
-      Id: 1000005,
-      Name: "She-NCS Release",
-      Singer: "Alan Walker",
-      src: "https://cdn.discordapp.com/attachments/775740994595323954/775741544149549096/Andromedik_-_SHE_NCS_ReleaseMP3_160K.mp3",
-      Thumail: "",
-      Avatar:
-        "https://media.wired.co.uk/photos/606da22c5b10d6006e4b2146/master/w_1600,c_limit/alan-walker.jpg",
-      Albumbs: [],
-      Liked: 0,
-      type: "",
-      Time: "",
-      Lyrics: "",
-    },
-    {
-      Id: 1000006,
-      Name: "She-NCS Release",
-      Singer: "Alan Walker",
-      src: "https://cdn.discordapp.com/attachments/775740994595323954/775741544149549096/Andromedik_-_SHE_NCS_ReleaseMP3_160K.mp3",
-      Thumail: "",
-      Avatar:
-        "https://media.wired.co.uk/photos/606da22c5b10d6006e4b2146/master/w_1600,c_limit/alan-walker.jpg",
-      Albumbs: [],
-      Liked: 0,
-      type: "",
-      Time: "",
-      Lyrics: "",
-    },
   ],
 };
