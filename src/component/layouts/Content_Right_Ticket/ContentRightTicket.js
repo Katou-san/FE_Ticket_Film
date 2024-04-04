@@ -92,7 +92,7 @@ export default function ContentRightTicket({
   return (
     <>
       <div className="Frame_Img_Ticket">
-        <img src={URL_Result} alt="" />
+        <img src={URL_Result || img} alt="" />
       </div>
       <h1>{name_Film}</h1>
       <div className="Content_Ticket">

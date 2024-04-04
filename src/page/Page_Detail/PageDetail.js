@@ -57,7 +57,7 @@ export default function PageDetail() {
             </div>
           </div>
           <div className="Content_Right">
-            <img src={URL_Result} alt="" />
+            <img src={URL_Result || img} alt="" />
             <div className="Btn_Deatail_Film">
               <button
                 onClick={() => {

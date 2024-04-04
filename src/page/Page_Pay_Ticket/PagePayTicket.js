@@ -49,6 +49,7 @@ export default function PagePayTicket() {
       Film_Id,
       Time: Convert_DateToString(Array_Day[Index_Day]),
     }).then((res) => {
+      console.log(Convert_DateToString(Array_Day[Index_Day]));
       if (res.status === 200) {
         const Array_R = [...new Set(res.data.Array_Room)].sort();
         Set_Array_RoomV(Array_R);

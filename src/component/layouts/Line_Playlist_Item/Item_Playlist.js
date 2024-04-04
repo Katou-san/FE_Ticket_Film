@@ -36,7 +36,7 @@ export default function ItemLinePlaylist({ item, list_Item }) {
       {!is_Loading && (
         <>
           <div className="Farme_Img_Item">
-            <img src={URL_Result} alt="" srcSet="" />
+            <img src={URL_Result || img} alt="" srcSet="" />
           </div>
           <div className="Conten_ItemE">
             <h3>{name_Film}</h3>
